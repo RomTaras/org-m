@@ -1,0 +1,16 @@
+<div class="panel panel-default" ng-init="getcompanies()">
+  <div class="panel-heading">
+    <h3 class="panel-title">Edit companies</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+    	<div ng-repeat="company in companies">
+    		<div class="col-md-6">
+    			<div class="col-md-6">
+    				<a class="btn btn-primary" href="#/companies/details/{{company._id}}">{{company.parentCompany}}</a>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+  </div>
+</div>

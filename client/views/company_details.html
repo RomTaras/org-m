@@ -1,0 +1,23 @@
+<a href="#/companies">Go Back</a>
+<div class="panel panel-default" ng-init="getcompany()">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{company.title}}</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+     
+      <div class="col-md-8">
+        </p>{{company.description}}</p>
+        <ul class="list-group">
+          <li class="list-group-item">Parent Company: {{company.parentCompany}}</li>
+          <li class="list-group-item">Child Compaies: {{company.childCompaies[0]}}</li>
+          <li class="list-group-item">Earnings: {{company.earnings}}</li>
+        </ul>
+        
+     <div class="pull-left">
+         <a href="#/companies/edit/{{company._id}}">Edit</a> |  <a href="#" ng-click="removecompany(company._id)">Delete</a>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
