@@ -1,20 +1,14 @@
 var myApp = angular.module('myApp');
 
 function createNode(classNode, textNode){
-
-				
-
+			
 				var tr = $('<tr/>', {
 				class: classNode
 				});
 
 				var td = $('<td/>').text(textNode);
-				
-
 				tr
 					.append(td);
-					
-
 				return tr;
 			};
 
@@ -23,13 +17,11 @@ function createCompany(parentCompany, childCompaies, earnings, index){
 				class: "tree"
 			});
 	
-
 	var parentNode = createNode("treegrid-" + index + 1 + " treegrid-parent-0",parentCompany);
 	var arr = childCompaies.split(', ');
 	var earingsNode = createNode("treegrid-parent-0" ,' Estimated earnings : ' + earnings);
 	var mainNode = createNode("treegrid-0","Company Name:");
 	
-
 	table
 		.append(mainNode)
 		.append(parentNode)
@@ -42,9 +34,8 @@ function createCompany(parentCompany, childCompaies, earnings, index){
 	table.append(earingsNode);
 
 	return table;
-
-	
 };
+
 myApp.controller('companiesController', ['$scope', '$http', '$location', '$routeParams', function($scope, $http, $location, $routeParams){
 	// console.log('companiesController loaded...');
 
@@ -53,8 +44,7 @@ myApp.controller('companiesController', ['$scope', '$http', '$location', '$route
 	$scope.getcompanies = function(){
 		$http.get('/api/companies').success(function(response){
 			$scope.companies = response;
-
-			
+		
 			var elems = response.map(function(item, index) {
 						return createCompany(item.parentCompany, item.childCompaies, item.earnings, index);
 					});
