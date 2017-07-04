@@ -2,16 +2,16 @@ const mongoose = require('mongoose');
 
 // Companies Schema
 const CompanySchema = mongoose.Schema({
-	parentCompany:{
+	companyName:{
 		type: String
 	},
 	
-    childCompaies:{
+    parentCompany:{
     	type: String
     },
 
 	earnings:{
-		type: String,
+		type: Number,
 		required: true
 	}
 });
@@ -21,6 +21,7 @@ const Companies = module.exports = mongoose.model('Companies', CompanySchema);
 // Get Companies
 module.exports.getCompanies = (callback, limit) => {
 	Companies.find(callback).limit(limit);
+
 }
 
 // Get Company
@@ -30,6 +31,10 @@ module.exports.getCompanyById = (id, callback) => {
 
 // Add Company
 module.exports.addCompany = (company, callback) => {
+	
+	if(!company.parentCompany){
+		company.parentCompany = 0;
+	}
 	Companies.create(company, callback);
 }
 
@@ -37,8 +42,8 @@ module.exports.addCompany = (company, callback) => {
 module.exports.updateCompany = (id, company, options, callback) => {
 	var query = {_id: id};
 	var update = {
+		companyName: company.companyName,
 		parentCompany: company.parentCompany,
-		childCompaies: company.childCompaies,
 		earnings: company.earnings
 		
 	}

@@ -11,6 +11,8 @@ app.use(bodyParser.json());
 Companies =require('./models/manager');
 
 // Connect to Mongoose
+//mongoose.connect('mongodb://localhost/manager');
+
 mongoose.connect('mongodb://admin:admin@ds131312.mlab.com:31312/manager');
 var db = mongoose.connection;
 
